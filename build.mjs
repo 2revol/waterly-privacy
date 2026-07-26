@@ -14,7 +14,14 @@ await mkdir(resolve(output, ".openai"), { recursive: true });
 await cp(resolve(root, "index.html"), resolve(client, "index.html"));
 await cp(resolve(root, "styles.css"), resolve(client, "styles.css"));
 await cp(resolve(root, "ru", "index.html"), resolve(client, "ru", "index.html"));
-await cp(resolve(root, "assets", "revol-apps.png"), resolve(client, "assets", "revol-apps.png"));
+for (const asset of [
+  "waterly-app.png",
+  "waterly-logo.png",
+  "waterly-name.png",
+  "waterly-onboarding.png"
+]) {
+  await cp(resolve(root, "assets", asset), resolve(client, "assets", asset));
+}
 await cp(resolve(root, ".openai", "hosting.json"), resolve(output, ".openai", "hosting.json"));
 
 const worker = `export default {
@@ -37,16 +44,37 @@ const worker = `export default {
 await writeFile(resolve(output, "server", "index.js"), worker, "utf8");
 
 const pages = [
-  ["index.html", "./styles.css", "./assets/revol-apps.png", "./ru/"],
-  ["ru/index.html", "../styles.css", "../assets/revol-apps.png", "../"]
+  [
+    "index.html",
+    "./styles.css",
+    "./assets/waterly-logo.png",
+    "./assets/waterly-name.png",
+    "./assets/waterly-app.png",
+    "./assets/waterly-onboarding.png",
+    "./ru/"
+  ],
+  [
+    "ru/index.html",
+    "../styles.css",
+    "../assets/waterly-logo.png",
+    "../assets/waterly-name.png",
+    "../assets/waterly-app.png",
+    "../assets/waterly-onboarding.png",
+    "../"
+  ]
 ];
 
-for (const [page, stylesheet, image, languageLink] of pages) {
+for (const [page, ...references] of pages) {
   const html = await readFile(resolve(root, page), "utf8");
-  for (const reference of [stylesheet, image, languageLink]) {
+  for (const reference of references) {
     if (!html.includes(reference)) {
       throw new Error(`${page} is missing ${reference}`);
     }
+  }
+
+  const policySectionCount = [...html.matchAll(/<section id="section-\d+">/g)].length;
+  if (policySectionCount !== 15) {
+    throw new Error(`${page} contains ${policySectionCount} policy sections instead of 15`);
   }
 }
 
