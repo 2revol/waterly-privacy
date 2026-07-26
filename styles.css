@@ -74,31 +74,23 @@ footer {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  min-width: 180px;
+  min-width: 158px;
   text-decoration: none;
-}
-
-.brand-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 15px;
-  box-shadow: 0 8px 24px rgba(39, 112, 196, 0.13);
 }
 
 .brand-name {
   position: relative;
   display: block;
-  width: 132px;
-  height: 48px;
+  width: 158px;
+  height: 56px;
   overflow: hidden;
 }
 
 .brand-name img {
   position: absolute;
-  top: -52px;
-  left: -13px;
-  width: 160px;
+  top: -58px;
+  left: -15px;
+  width: 190px;
   max-width: none;
 }
 
@@ -312,10 +304,6 @@ h1 span {
 
 .download-copy {
   padding: 2rem 2rem 2rem 0;
-}
-
-.download-copy .eyebrow {
-  color: #76c4ff;
 }
 
 .download-copy > h2,
@@ -600,15 +588,29 @@ footer {
   padding: 3rem 0;
 }
 
-.footer-brand .brand-icon {
-  width: 42px;
-  height: 42px;
-}
-
-footer p {
+.developer-credit {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
   margin: 0;
   color: var(--muted);
   font-size: 0.82rem;
+}
+
+.developer-logo {
+  position: relative;
+  display: block;
+  width: 130px;
+  height: 34px;
+  overflow: hidden;
+}
+
+.developer-logo img {
+  position: absolute;
+  top: -64px;
+  left: -14px;
+  width: 159px;
+  max-width: none;
 }
 
 @media (max-width: 980px) {
@@ -651,21 +653,15 @@ footer p {
     min-width: 0;
   }
 
-  .brand-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 13px;
-  }
-
   .brand-name {
-    width: 105px;
-    height: 42px;
+    width: 126px;
+    height: 48px;
   }
 
   .brand-name img {
-    top: -43px;
-    left: -11px;
-    width: 130px;
+    top: -49px;
+    left: -12px;
+    width: 154px;
   }
 
   .header-actions {
@@ -736,14 +732,24 @@ footer p {
     padding: 4rem 0;
   }
 
-  footer p {
+  .developer-credit {
     margin-top: 1.5rem;
   }
 }
 
 @media (max-width: 540px) {
-  .brand-name {
-    display: none;
+  .site-header .brand {
+    min-width: 92px;
+  }
+
+  .site-header .brand-name {
+    width: 92px;
+  }
+
+  .site-header .brand-name img {
+    top: -37px;
+    left: -9px;
+    width: 116px;
   }
 
   .policy-link {
@@ -767,6 +773,12 @@ footer p {
 
   .policy-meta div {
     min-width: 0;
+  }
+
+  .developer-credit {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
   }
 }
 

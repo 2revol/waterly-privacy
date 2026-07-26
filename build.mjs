@@ -15,8 +15,8 @@ await cp(resolve(root, "index.html"), resolve(client, "index.html"));
 await cp(resolve(root, "styles.css"), resolve(client, "styles.css"));
 await cp(resolve(root, "ru", "index.html"), resolve(client, "ru", "index.html"));
 for (const asset of [
+  "developer-logo.png",
   "waterly-app.png",
-  "waterly-logo.png",
   "waterly-name.png",
   "waterly-onboarding.png"
 ]) {
@@ -47,7 +47,7 @@ const pages = [
   [
     "index.html",
     "./styles.css",
-    "./assets/waterly-logo.png",
+    "./assets/developer-logo.png",
     "./assets/waterly-name.png",
     "./assets/waterly-app.png",
     "./assets/waterly-onboarding.png",
@@ -56,7 +56,7 @@ const pages = [
   [
     "ru/index.html",
     "../styles.css",
-    "../assets/waterly-logo.png",
+    "../assets/developer-logo.png",
     "../assets/waterly-name.png",
     "../assets/waterly-app.png",
     "../assets/waterly-onboarding.png",
