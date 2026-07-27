@@ -24,9 +24,15 @@ body {
     radial-gradient(circle at 8% 0%, rgba(91, 181, 255, 0.18), transparent 30rem),
     linear-gradient(180deg, #f5faff 0, #fff 45rem);
   color: var(--ink);
-  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.65;
   text-rendering: optimizeLegibility;
+}
+
+html[lang="zh-CN"] h1,
+html[lang="zh-CN"] .download-copy > h2,
+html[lang="zh-CN"] .policy-title > h2 {
+  letter-spacing: -0.04em;
 }
 
 img {
@@ -312,6 +318,7 @@ h1 span {
   font-size: clamp(2.4rem, 4.7vw, 4.8rem);
   letter-spacing: -0.06em;
   line-height: 1;
+  overflow-wrap: anywhere;
 }
 
 .download-copy > p {

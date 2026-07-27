@@ -7,6 +7,7 @@ const client = resolve(output, "client");
 
 await rm(output, { recursive: true, force: true });
 await mkdir(resolve(client, "ru"), { recursive: true });
+await mkdir(resolve(client, "zh-cn"), { recursive: true });
 await mkdir(resolve(client, "assets"), { recursive: true });
 await mkdir(resolve(output, "server"), { recursive: true });
 await mkdir(resolve(output, ".openai"), { recursive: true });
@@ -14,6 +15,7 @@ await mkdir(resolve(output, ".openai"), { recursive: true });
 await cp(resolve(root, "index.html"), resolve(client, "index.html"));
 await cp(resolve(root, "styles.css"), resolve(client, "styles.css"));
 await cp(resolve(root, "ru", "index.html"), resolve(client, "ru", "index.html"));
+await cp(resolve(root, "zh-cn", "index.html"), resolve(client, "zh-cn", "index.html"));
 for (const asset of [
   "developer-logo.png",
   "waterly-app.png",
@@ -51,7 +53,8 @@ const pages = [
     "./assets/waterly-name.png",
     "./assets/waterly-app.png",
     "./assets/waterly-onboarding.png",
-    "./ru/"
+    "./ru/",
+    "./zh-cn/"
   ],
   [
     "ru/index.html",
@@ -60,7 +63,18 @@ const pages = [
     "../assets/waterly-name.png",
     "../assets/waterly-app.png",
     "../assets/waterly-onboarding.png",
-    "../"
+    "../",
+    "../zh-cn/"
+  ],
+  [
+    "zh-cn/index.html",
+    "../styles.css",
+    "../assets/developer-logo.png",
+    "../assets/waterly-name.png",
+    "../assets/waterly-app.png",
+    "../assets/waterly-onboarding.png",
+    "../",
+    "../ru/"
   ]
 ];
 
